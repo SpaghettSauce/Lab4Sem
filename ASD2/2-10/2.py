@@ -35,7 +35,7 @@ def breadth_first_search(graph, start):
 
 
 input_file = "input.txt"
-output_file = "output.txt"
+output_file = "output_2.txt"
 source_vertex = 0
 
 graph = read_graph(input_file)

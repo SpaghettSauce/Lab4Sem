@@ -22,13 +22,11 @@ def find_connect(graph):
     num_vertices = len(graph)
     visited = [False] * num_vertices
     components = []
-
     for v in range(num_vertices):
         if not visited[v]:
             component = []
             dfs(graph, visited, v, component)
             components.append(component)
-
     return components
 
 
@@ -36,6 +34,6 @@ def find_connect(graph):
 input_file = "input.txt"
 output_file = "output_4.txt"
 
-adjacency_matrix = read_matrix(input_file)
-connectivity_components = find_connect(adjacency_matrix)
-write_results(connectivity_components, output_file)
+graph = read_matrix(input_file)
+connect_comp = find_connect(graph)
+write_results(connect_comp, output_file)
