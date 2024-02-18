@@ -1,35 +1,37 @@
-def read_matrix(input_file):
-    with open(input_file, 'r') as file:
-        lines = file.readlines()
-        graph = [[int(val) for val in line.split()] for line in lines]
-    return graph
+def read_matrix(file_path):
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+        matrix = [list(map(int, line.strip().split())) for line in lines]
+    return matrix
 
-def write_results(components, output_file):
-    with open(output_file, 'w') as f:
-        for i, component in enumerate(components):
-            vertex = ','.join(map(str,[vertex+1 for vertex in component]))
-            f.write(f"Компонент связанности {i+1}: {vertex}\n")
+def write_results(file_path, connectcomp):
+    with open(file_path, 'w') as f:
+        for i, component in enumerate(connectcomp):
+            f.write(f"Компонент связанности {i+1}: {component}\n")
 
-def bfs(graph, start, visited,component):
+def bfs(adj_matrix, start, visited):
     queue = [start]
     visited[start] = True
+
     while queue:
         vertex = queue.pop(0)
-        component.append(vertex)
-        for neighbor, connected in enumerate(graph[vertex]):
+        for neighbor, connected in enumerate(adj_matrix[vertex]):
             if connected and not visited[neighbor]:
                 queue.append(neighbor)
                 visited[neighbor] = True
-    
 
-def find_connect(graph):
-    num_vertices = len(graph)
+def find_connect(adj_matrix):
+    num_vertices = len(adj_matrix)
     visited = [False] * num_vertices
     connect = []
-    for v in range(num_vertices):
-        if not visited[v]:
+
+    for vertex in range(num_vertices):
+        if not visited[vertex]:
             component = []
-            bfs(graph, v,visited,  component)
+            bfs(adj_matrix, vertex, visited)
+            for i, v in enumerate(visited):
+                if v:
+                    component.append(i)
             connect.append(component)
     return connect
 
@@ -39,7 +41,7 @@ def find_connect(graph):
 input_file = 'input.txt'
 output_file = 'output_3.txt'
 
-graph = read_matrix(input_file)
-connect_comp = find_connect(graph)
-write_results(connect_comp,output_file)
+adj_matrix = read_matrix(input_file)
+connectivity_components = find_connect(adj_matrix)
+write_results(output_file, connectivity_components)
 
