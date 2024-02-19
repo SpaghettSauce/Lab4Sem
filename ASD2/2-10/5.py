@@ -11,6 +11,9 @@ def write_results(filename, components):
             vertex = ','.join(map(str,[vertex+1 for vertex in component]))
             f.write(" ".join(map(str, vertex)) + "\n")
 
+def transpose(graph):
+    return [[graph[j][i] for j in range(len(graph))] for i in range(len(graph[0]))]
+
 def dfs(graph, v, visited, stack):
     visited[v] = True
     for neighbor in range(len(graph)):
@@ -18,6 +21,12 @@ def dfs(graph, v, visited, stack):
             dfs(graph, neighbor, visited, stack)
     stack.append(v)
 
+def dfs_util(graph, v, visited, component):
+    visited[v] = True
+    component.append(v)
+    for neighbor in range(len(graph)):
+        if graph[v][neighbor] == 1 and not visited[neighbor]:
+            dfs_util(graph, neighbor, visited, component)
 
 def strongly_connected_components(graph):
     num_vertices = len(graph)
@@ -28,6 +37,7 @@ def strongly_connected_components(graph):
         if not visited[v]:
             dfs(graph, v, visited, stack)
 
+    transposed_graph = transpose(graph)
     visited = [False] * num_vertices
     components = []
 
@@ -35,7 +45,7 @@ def strongly_connected_components(graph):
         v = stack.pop()
         if not visited[v]:
             component = []
-            dfs( graph, v, visited, component)
+            dfs_util(transposed_graph, v, visited, component)
             components.append(component)
 
     return components
