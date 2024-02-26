@@ -4,7 +4,7 @@ def read_matrix(filename):
         return [[int(x) for x in line.split()] for line in lines]
 
 def write_results(components, output_file):
-    with open(output_file, 'w') as f:
+    with open(output_file, 'w',encoding='cp1251') as f:
         for i, component in enumerate(components):
             vertex = ','.join(map(str,[vertex+1 for vertex in component]))
             f.write(f"Компонент связанности {i+1}: {vertex}\n")
@@ -30,16 +30,16 @@ def kosaraju(graph):
 
     transposed_graph = transpose_graph(graph)
     visited = [False] * n
-    scc_list = []
+    scc = []
 
     while stack:
         vertex = stack.pop()
         if not visited[vertex]:
             component = []
             dfs(transposed_graph, vertex, visited, component)
-            scc_list.append(component)
+            scc.append(component)
 
-    return scc_list
+    return scc
 
 
 input_file = 'input.txt'

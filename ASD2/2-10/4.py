@@ -5,7 +5,7 @@ def read_matrix(input_file):
     return graph
 
 def write_results(components, output_file):
-    with open(output_file, 'w') as f:
+    with open(output_file, 'w',encoding='cp1251') as f:
         for i, component in enumerate(components):
             vertex = ','.join(map(str,[vertex+1 for vertex in component]))
             f.write(f"Компонент связанности {i+1}: {vertex}\n")
