@@ -8,14 +8,14 @@ def read_matrix(filename):
             matrix.append(list(map(int, line.strip().split())))
     return np.array(matrix)
 
-def write_results(components, output_file):
-    with open(output_file, 'w',encoding='cp1251') as f:
-        for i, component in enumerate(components):
-            vertex = ','.join(map(str,[vertex+1 for vertex in component]))
-            f.write(f"Компонент связанности {i+1}: {vertex}\n")
+def write_results(mst, output_file):
+    with open(output_file, 'w') as file:
+        file.write("Грани \tЦенв\n")
+        for u,    weight in mst:
+            file.write(f"{u}       \t{weight}\n")
 
 
-def prim_algorithm(adj_matrix):
+def prim(adj_matrix):
     num_vertices = len(adj_matrix)
     selected_vertices = set()
     selected_vertices.add(0)
@@ -41,5 +41,5 @@ filename = 'input.txt'
 output_file = 'output_7.txt'
 
 matrix = read_matrix(filename)
-min_spanning_tree = prim_algorithm(matrix)
-write_results(min_spanning_tree, output_file)
+mst = prim(matrix)
+write_results(mst, output_file)
