@@ -11,8 +11,8 @@ def read_matrix(filename):
 def write_results(mst, output_file):
     with open(output_file, 'w') as file:
         file.write("Грани \tЦенв\n")
-        for u,    weight in mst:
-            file.write(f"{u}       \t{weight}\n")
+        for u, v in mst:
+            file.write(f"{u} - {v}\t\n")
 
 
 def prim(adj_matrix):
@@ -43,3 +43,4 @@ output_file = 'output_7.txt'
 matrix = read_matrix(filename)
 mst = prim(matrix)
 write_results(mst, output_file)
+

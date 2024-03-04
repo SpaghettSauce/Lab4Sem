@@ -52,7 +52,7 @@ def kruskal(adjacency_matrix):
         if x != y:
             e += 1
             result.append([u, v, weight])
-            union(parent, rank, x, y)
+            '''union(parent, rank, x, y)'''
 
     return result
 
