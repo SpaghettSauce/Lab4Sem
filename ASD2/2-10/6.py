@@ -6,9 +6,9 @@ def read_matrix(file_path):
 
 def write_results(mst, output_file):
     with open(output_file, 'w') as file:
-        file.write("Грани \tЦенв\n")
+        file.write("Путь \tВес\n")
         for u, v, weight in mst:
-            file.write(f"{u} - {v}\t{weight}\n")
+            file.write(f"{u+1} - {v+1}\t{weight}\n")
 
 def find(parent, i):
     if parent[i] == i:
@@ -52,7 +52,7 @@ def kruskal(adjacency_matrix):
         if x != y:
             e += 1
             result.append([u, v, weight])
-            '''union(parent, rank, x, y)'''
+            union(parent, rank, x, y)
 
     return result
 

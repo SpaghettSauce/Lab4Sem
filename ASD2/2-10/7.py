@@ -10,9 +10,9 @@ def read_matrix(filename):
 
 def write_results(mst, output_file):
     with open(output_file, 'w') as file:
-        file.write("Грани \tЦенв\n")
+        file.write("Кратчайший путь:\n")
         for u, v in mst:
-            file.write(f"{u} - {v}\t\n")
+            file.write(f"{u+1} - {v+1}\t\n")
 
 
 def prim(adj_matrix):
