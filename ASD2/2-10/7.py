@@ -15,27 +15,27 @@ def write_results(mst, output_file):
             file.write(f"{u+1} - {v+1}\t\n")
 
 
-def prim(adj_matrix):
-    num_vertices = len(adj_matrix)
-    selected_vertices = set()
-    selected_vertices.add(0)
-    min_spanning_tree = []
+def prim(graph):
+    num_vertices = len(graph)
+    selected = set()
+    selected.add(0)
+    min_tree = []
     
-    while len(selected_vertices) < num_vertices:
+    while len(selected) < num_vertices:
         min_weight = float('inf')
         min_edge = None
 
-        for vertex in selected_vertices:
+        for vertex in selected:
             for neighbor in range(num_vertices):
-                if neighbor not in selected_vertices and adj_matrix[vertex][neighbor] != 0:
-                    if adj_matrix[vertex][neighbor] < min_weight:
-                        min_weight = adj_matrix[vertex][neighbor]
+                if neighbor not in selected and graph[vertex][neighbor] != 0:
+                    if graph[vertex][neighbor] < min_weight:
+                        min_weight = graph[vertex][neighbor]
                         min_edge = (vertex, neighbor)
 
-        min_spanning_tree.append(min_edge)
-        selected_vertices.add(min_edge[1])
-    
-    return min_spanning_tree
+        min_tree.append(min_edge)
+        selected.add(min_edge[1])
+
+    return min_tree
 
 filename = 'input.txt' 
 output_file = 'output_7.txt'
