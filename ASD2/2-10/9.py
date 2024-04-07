@@ -14,11 +14,11 @@ def bellman_ford(graph, start):
     for u in range(n):
         for v in range(n):
             if graph[u][v] != 0 and dist[u] != INF and dist[u] + graph[u][v] < dist[v]:
-                return "Graph contains negative weight cycle"
+                return "Oh oh, negative cycle"
 
     return dist
 
-def read_graph_from_file(filename):
+def read_matrix(filename):
     with open(filename, 'r') as file:
         lines = file.readlines()
         graph = []
@@ -26,7 +26,7 @@ def read_graph_from_file(filename):
             graph.append(list(map(int, line.split())))
     return graph
 
-def write_result_to_file(filename, result):
+def write_results(filename, result):
     with open(filename, 'w') as file:
         for dist in result:
             file.write(str(dist) + '\n')
@@ -35,8 +35,8 @@ def write_result_to_file(filename, result):
 input_file = "input.txt"  
 output_file = "output_9.txt" 
 
-graph = read_graph_from_file(input_file)
+graph = read_matrix(input_file)
 start_vertex = 0  
 
 shortest_distances = bellman_ford(graph, start_vertex)
-write_result_to_file(output_file, shortest_distances)
+write_results(output_file, shortest_distances)
