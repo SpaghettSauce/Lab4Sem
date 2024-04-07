@@ -15,21 +15,20 @@ def write_results(filename, result):
 
 def dijkstra(graph, start):
     n = len(graph)
-    dist = [INF] * n
-    dist[start] = 0
+    d = [INF] * n
+    d[start] = 0
     visited = [False] * n
 
-    for _ in range(n):
-        u = min_distance(dist, visited)
+    for i in range(n):
+        u = min_dist(d, visited)
         visited[u] = True
 
         for v in range(n):
-            if graph[u][v] and not visited[v] and dist[u] != INF and dist[u] + graph[u][v] < dist[v]:
-                dist[v] = dist[u] + graph[u][v]
+            if graph[u][v] and not visited[v] and d[u] != INF and d[u] + graph[u][v] < d[v]:
+                d[v] = d[u] + graph[u][v]
+    return d
 
-    return dist
-
-def min_distance(dist, visited):
+def min_dist(dist, visited):
     min_dist = INF
     min_index = -1
     for v in range(len(dist)):
@@ -49,5 +48,5 @@ output_file = "output_8.txt"
 graph = read_matrix(input_file)
 start_vertex = 0  
 
-shortest_distances = dijkstra(graph, start_vertex)
-write_results(output_file, shortest_distances)
+short = dijkstra(graph, start_vertex)
+write_results(output_file, short)
