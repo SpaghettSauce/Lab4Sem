@@ -39,9 +39,9 @@ def write_results(filename, eulerian_cycle):
         for vertex in eulerian_cycle:
             file.write(str(vertex) + ' ')
 
-input_filename = 'input.txt'
-output_filename = 'output_10.txt'
+input_file = 'input.txt'
+output_file = 'output_10.txt'
 
-adj_matrix = read_matrix(input_filename)
-eulerian_cycle = euler(adj_matrix)
-write_results(output_filename, eulerian_cycle)
+graph = read_matrix(input_file)
+eulerian_cycle = euler(graph)
+write_results(output_file, eulerian_cycle)

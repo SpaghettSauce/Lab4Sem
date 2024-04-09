@@ -1,11 +1,13 @@
-from itertools import permutations
+array = ['к','о','м','б','и','н','а','т','о','р','и','к','а']  
+n = len(array)
+words = set()
 
-'''1'''
-word = "комбинаторика"
-letters = list(word)
-unique_letters = set(letters)
-permutations = permutations(unique_letters, 4)
-unique_words = set([''.join(p) for p in permutations])
+for i in range(0,n):
+    for j in range(0,n):
+        for q in range(0,n):
+            for k in range(0,n):
+                for o in range(0,n):
+                    if (array[i] != array[i+1]):
+                        words.add(array[i]+array[j]+array[q]+array[k])
 
-print("Number of different 5-letter words:", len(unique_words))
-
+print(len(words))
