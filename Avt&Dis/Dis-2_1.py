@@ -1,13 +1,12 @@
-array = ['к','о','м','б','и','н','а','т','о','р','и','к','а']  
-n = len(array)
-words = set()
+from itertools import permutations
 
-for i in range(0,n):
-    for j in range(0,n):
-        for q in range(0,n):
-            for k in range(0,n):
-                for o in range(0,n):
-                    if (array[i] != array[i+1]):
-                        words.add(array[i]+array[j]+array[q]+array[k])
+word = "Комбинатoрuкa"
+unique_letters = ''.join(set(word)) 
+Wlist = permutations(unique_letters, 4) 
+arr = []
 
-print(len(words))
+for perm in Wlist: 
+    arr.append(''.join(perm))
+
+print("Total valid words:", len(arr))
+print(arr)

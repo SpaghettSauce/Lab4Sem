@@ -49,7 +49,6 @@ automaton.add_transition('q2', 'a', 'q5')
 automaton.add_transition('q5', 'b', 'q6')
 automaton.add_transition('q6', 'a', 'q5')
 
-# Test the automaton with some strings
 strings_to_test = ["abbc", "abababbc", "ba", "ab", "abcc","abb", ]
 
 for string in strings_to_test:
