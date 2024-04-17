@@ -1,19 +1,24 @@
-def count_paths(m, n, blocked_vertical=[]):
-    paths = [[0] * (n + 1) for _ in range(m + 1)]
-    paths[n-1][m-1] = 1
-    for i in range(m + 1):
-        for j in range(n + 1):
-            if j in blocked_vertical:
-                continue
-            if i > 0:
-                paths[i][j] += paths[i - 1][j]
-            if j > 0:
-                paths[i][j] += paths[i][j - 1]
-    return paths[m][n]
+def count_paths(rows, cols):
+    paths = [[0] * (cols + 1) for _ in range(rows + 1)]
+    paths[0][0] = 1
 
+    for i in range(rows + 1):
+        for j in range(cols + 1):
+            # Если мы не в начале
+            if i != 0 or j != 0:
+                # если мы слева сверху, то путь 1
+                if i == 0 and j == 0:
+                    paths[i][j] = 1
+                else:
+                    # проверяем если предыдущий ход был вертикальным 
+                    if j >= 2:
+                        paths[i][j] += paths[i][j - 2]
+                    # проверяем если предыдущий ход был вертикальным
+                    if i >= 1:
+                        paths[i][j] += paths[i - 1][j]
 
-m = 15  
-n = 14  
-blocked_vertical = [1]
-total_paths = count_paths(m, n, blocked_vertical)
-print("Total paths:", total_paths)
+    return paths[rows][cols]
+
+rectangle_rows = 15
+rectangle_cols = 14
+print("Кол-во разных путе:", count_paths(rectangle_rows, rectangle_cols))
