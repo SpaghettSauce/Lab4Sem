@@ -24,8 +24,8 @@ class FiniteAutomaton:
 
 
 automaton = FiniteAutomaton()
-input_string = input("Enter input string: ")
+input_string = input()
 if automaton.run(input_string):
-    print("Accepted")
+    print("Принята")
 else:
-    print("Rejected")
+    print("Не принята")

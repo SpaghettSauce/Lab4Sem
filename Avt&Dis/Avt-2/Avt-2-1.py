@@ -29,7 +29,7 @@ dfa = DFA()
 test_strings = ["ab", "bbca", "bca", "bac", "bcb", "abbbc"]
 for test_string in test_strings:
     if dfa.run(test_string):
-        print(f"'{test_string}' is accepted")
+        print(f"'{test_string}' принята")
     else:
-        print(f"'{test_string}' is rejected")
+        print(f"'{test_string}' не принята")
 

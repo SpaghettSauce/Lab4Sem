@@ -53,6 +53,6 @@ strings_to_test = ["abbc", "abababbc", "ba", "ab", "abcc","abb", ]
 
 for string in strings_to_test:
     if automaton.is_accepted(string):
-        print(f"'{string}' is accepted")
+        print(f"'{string}' Принята")
     else:
-        print(f"'{string}' is not accepted")
+        print(f"'{string}' Не принята")
