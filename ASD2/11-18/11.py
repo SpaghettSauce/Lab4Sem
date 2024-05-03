@@ -1,12 +1,16 @@
 
+
 def automat(pattern):
+    
     alphabet = set(pattern)
+    
     automaton = [{ch: 0 for ch in alphabet} for _ in range(len(pattern) + 1)]
-    for state in range(len(pattern) + 1):  
+    for state in range(len(pattern) + 1): 
         for ch in alphabet:
             next_state = min(len(pattern), state + 1)
             while next_state > 0 and pattern[:next_state] != pattern[state-next_state+1:state+1]:
                 next_state -= 1
+            
             automaton[state][ch] = next_state
     return automaton
 
