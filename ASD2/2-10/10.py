@@ -1,3 +1,4 @@
+#WARNING!! эта прога очень сомнительная, use with caution
 def euler(adj_matrix):
     num_vertices = len(adj_matrix)
     cycle = []
