@@ -40,6 +40,10 @@ def kmp_search(text, pattern):
 
     return matches
 
-text = "UNE JOURE JE SERAI DE RETOUR PRES DE TOI"
-pattern = "JE SERAI"
+input_file = 'input.txt'
+with open(input_file) as f:
+    text = f.readline().strip()
+print(f' {text}')
+pattern = input()
+
 print( kmp_search(text, pattern))
