@@ -1,4 +1,4 @@
-def compute_lps(pattern):
+def lps(pattern):
     lps = [0] * len(pattern)
     j = 0
     i = 1
@@ -15,11 +15,11 @@ def compute_lps(pattern):
                 i += 1
     return lps
 
-def kmp_search(text, pattern):
+def kmp(text, pattern):
     if not pattern:
         return []
 
-    lps = compute_lps(pattern)
+    lpsu = lps(pattern)
     i = 0
     j = 0
     matches = []
@@ -31,10 +31,10 @@ def kmp_search(text, pattern):
 
             if j == len(pattern):
                 matches.append(i - j)
-                j = lps[j - 1]
+                j = lpsu[j - 1]
         else:
             if j != 0:
-                j = lps[j - 1]
+                j = lpsu[j - 1]
             else:
                 i += 1
 
@@ -46,4 +46,4 @@ with open(input_file) as f:
 print(f' {text}')
 pattern = input()
 
-print( kmp_search(text, pattern))
+print( kmp(text, pattern))
