@@ -30,7 +30,7 @@ def count_paths(rows, cols):
     for i in range(rows + 1):
         for j in range(cols + 1):
             if i != 0 or j != 0:
-                # Summing paths from top and left cells
+           
                 paths[i][j] = 0
                 if j >= 2:
                     paths[i][j] += paths[i][j - 2]
