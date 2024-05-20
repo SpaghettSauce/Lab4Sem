@@ -21,7 +21,7 @@ def boyer_moore(text, pattern):
             k = m - 1
     return -1
 
-# Example usage:
+
 text = "This is an example text"
 pattern = "example"
 print("Pattern found at index:", boyer_moore(text, pattern))
