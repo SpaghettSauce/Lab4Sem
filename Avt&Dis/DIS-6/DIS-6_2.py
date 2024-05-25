@@ -1,8 +1,8 @@
 def adj(file_name):
-    '''with open(file_name, 'r') as file:
-        incident_matrix = [list(map(int, line.split())) for line in file.readlines()]'''
-    num_vertices = int(input("Вершин:"))
-    num_edges = int(input("Граней "))
+    with open(file_name, 'r') as file:
+        incident_matrix = [list(map(int, line.split())) for line in file.readlines()]
+    #num_vertices = int(input("Вершин:"))
+    #num_edges = int(input("Граней "))
     incident_matrix = []
     for _ in range(num_vertices):
         row = list(map(int, input().split()))
@@ -19,7 +19,6 @@ def adj(file_name):
 
     return matrix
 
-# Example usage
 file = "input.txt"
 matrix = adj(file)
 for row in matrix:
