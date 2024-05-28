@@ -25,7 +25,7 @@ for count in range(1, size_hor):
             matrix[i][j] += matrix[i][j - 1]       
         i -= 1
         j += 1
-# Случай 
+#
 for count in range(1, size_ver):
     i = count    
     j = 0
@@ -50,18 +50,19 @@ for count in range(1, size_hor):
         j += 1
 print(str(matrix[size_ver - 1][size_hor - 1]))
 
-
-"""# Создание массива размером 16x16 и заполнение его нулями
-grid = [[0 for _ in range(16)] for _ in range(16)]
+'''
+# Создание массива размером 16x16 и заполнение его нулями
+grid = [[0 for _ in range(15)] for _ in range(15)]
 
 grid[0][1] = 1
 grid[1][0] = 1
 # Заполнение первой строки и первого столбца значениями 1
 
 # Вычисление количества путей для каждой ячейки массива
-for i in range(1, 16):
-for j in range(1, 16):
-grid[i][j] = grid[i-1][j] + grid[i][j-1]
+for i in range(1, 15):
+    for j in range(1, 15):
+        grid[i][j] = grid[i-1][j] + grid[i][j-1]
 
 # Вывод количества путей из левого нижнего угла в правый верхний угол
-print(grid[15][15])"""
+print(grid[14][14])
+'''

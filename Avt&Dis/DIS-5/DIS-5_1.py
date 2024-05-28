@@ -1,69 +1,62 @@
+import sys
 import numpy as np
+import itertools
+from tabulate import tabulate
 
-# Define parameters
-n = 15
-m = 5
-k = n - m
-g_poly = "10100110111"
+np.set_printoptions(threshold=sys.maxsize)
 
-# Function to convert polynomial string to list of integers
-def poly_to_list(poly):
-    return [int(bit) for bit in poly]
+def hammingDist(str1, str2, fillchar='-'):
+    return sum([ch1 != ch2 for (ch1, ch2) in itertools.zip_longest(str1, str2, fillvalue=fillchar)])
 
-# Generating polynomial as list
-g = poly_to_list(g_poly)
+g = [int(i) for i in "10100110111"] # порождающий многочлен
+n = 31 # общее число элементов
+m = 11 # число информационных элементов
+length = len(g)
 
-# Constructing the generating matrix G
-G = np.zeros((m, n), dtype=int)
+for i in range(n - length):
+    g.append(0)
+
+G0 = [] # временная матрица
 for i in range(m):
-    G[i, i:i+len(g)] = g
+    G0.append(np.roll(g, i))
+G = np.array(G0) # порождающая матрица
 
-# Generate all possible information vectors
-information_vectors = [np.array(list(np.binary_repr(i, m)), dtype=int) for i in range(2**m)]
+codewords_table_headers = ["Информационное слово", "Кодовое слово"]
+codewords_table = []
+length = pow(2, m)
 
-# Encode information vectors to form codewords
-codewords = [np.dot(info_vector, G) % 2 for info_vector in information_vectors]
+for i in range(0, length):
+    d = np.array([int(i) for i in np.binary_repr(i, m)])
+    codewords_table.append([''.join(map(str, d.tolist())), ''.join(map(str, np.mod(d.dot(G), 2)))])
 
-# Create a table of codewords
-codewords_table = np.array(codewords)
+with open('output1.txt', 'w') as file:
+    file.write("Разрешённые кодовые комбинации: ")
+    file.write("\n")
+    file.write(tabulate(codewords_table, codewords_table_headers, tablefmt="grid", numalign='center'))
+    file.close()
 
-# Output the generating matrix and a fragment of the codewords table
-print("Generating Matrix (G):")
-print(G)
-print("\nFirst 10 Codewords:")
-print(codewords_table[:10])
+codewords_table = np.array("00000000000")
+length = pow(2, m)
 
-# Calculate t (error correction capability)
-d_min = 7
-t = (d_min - 1) // 2
+for i in range(1, length):
+    d = np.array([int(i) for i in np.binary_repr(i, m)])
+    codewords_table = np.append(codewords_table, ''.join(map(str, np.mod(d.dot(G), 2))))
 
-# Number of distinct error vectors the code can correct
-distinct_error_vectors = sum([np.math.comb(n, i) for i in range(t + 1)])
+length = len(codewords_table)
+hamming_distances_table = np.zeros((length, length), dtype=int)
 
-# Parity-check matrix H (can be derived from G)
-# H is (n-k) x n matrix, G is m x n, so H = [I | P^T] where G = [I | P]
-H = np.hstack((np.eye(n-m, dtype=int), G[:, m:].T))
+with open('output2.txt', 'w') as file:
+    file.write("Таблица кодовых расстояний:\n")
+    file.write("\n")
 
-# Function to calculate syndrome
-def calculate_syndrome(error_vector, H):
-    return np.dot(H, error_vector) % 2
+    for i in range(0, length):
+        for j in range(i + 1, length):
+            hamming_distances_table[i][j] = hammingDist(codewords_table[i], codewords_table[j])
+            hamming_distances_table[j][i] = hamming_distances_table[i][j]
+        file.write(str(hamming_distances_table[i]))
+        file.write("\n")
 
-# Example error vector
-error_vector = np.zeros(n, dtype=int)
-error_vector[0] = 1  # Single bit error
-
-syndrome = calculate_syndrome(error_vector, H)
-
-print("\nError Correction Capability (t):", t)
-print("Number of Distinct Error Vectors Correctable:", distinct_error_vectors)
-print("Syndrome for Error Vector [1,0,...,0]:", syndrome)
-
-# Maximum number of errors guaranteed to be detected
-sigma = d_min - 1
-
-# Error vectors that cannot be detected (weight >= d_min)
-undetectable_errors = [np.binary_repr(i, n) for i in range(2**n) if bin(i).count('1') >= d_min]
-
-print("\nMaximum Number of Errors Guaranteed to be Detected (σ):", sigma)
-print("First 10 Undetectable Errors (weight >= d_min):")
-print(undetectable_errors[:10])
+    file.write("\n")
+    file.write("Минимальное кодовое расстояние:\n")
+    file.write(str(np.amin(np.where(hamming_distances_table == 0, 100, hamming_distances_table))))
+    file.close()

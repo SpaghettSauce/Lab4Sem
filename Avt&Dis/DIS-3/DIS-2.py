@@ -14,7 +14,7 @@ for i in range(len(n)):
     for j in range(i + 1, len(n)):
         num = sum(1 for k in range(len(n[i])) if n[i][k] != n[j][k])
         line.append(num)
-    table.append(line)
+    table.append(line)                                    
 
 for i in range(1, len(n) + 1):
     for j in range(i):
