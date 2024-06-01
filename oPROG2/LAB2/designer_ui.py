@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'c:\Users\Spaghet\Desktop\PROGVS\GIIT\Lab4Sem\oPROG2\project_2\designer.ui'
+# Form implementation generated from reading ui file 'c:\Users\Spaghet\Desktop\PROGVS\GIIT\Lab4Sem\oPROG2\LAB2\designer.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.0
 #
