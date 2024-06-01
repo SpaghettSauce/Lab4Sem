@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1008</width>
-    <height>561</height>
+    <height>528</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,9 +16,9 @@
   <widget class="QLabel" name="city_label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>190</width>
+     <x>60</x>
+     <y>30</y>
+     <width>161</width>
      <height>33</height>
     </rect>
    </property>
@@ -29,10 +29,10 @@
   <widget class="QPushButton" name="btn">
    <property name="geometry">
     <rect>
-     <x>810</x>
-     <y>20</y>
-     <width>151</width>
-     <height>41</height>
+     <x>800</x>
+     <y>30</y>
+     <width>71</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -43,20 +43,29 @@
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>20</y>
-     <width>531</width>
-     <height>41</height>
+     <y>30</y>
+     <width>561</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <property name="clearButtonEnabled">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QListWidget" name="listWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>30</x>
      <y>130</y>
-     <width>371</width>
+     <width>361</width>
      <height>391</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-color: rgb(255, 170, 0);</string>
    </property>
   </widget>
   <widget class="QLabel" name="address_label">
@@ -88,11 +97,14 @@
   <widget class="QTextEdit" name="textEdit">
    <property name="geometry">
     <rect>
-     <x>690</x>
+     <x>680</x>
      <y>130</y>
-     <width>301</width>
+     <width>291</width>
      <height>391</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-color: rgb(255, 3, 3);</string>
    </property>
   </widget>
  </widget>

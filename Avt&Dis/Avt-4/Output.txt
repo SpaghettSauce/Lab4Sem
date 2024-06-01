@@ -1,0 +1,103 @@
+input: +000000000000000000000000000000000111111111111111111111111111111111111111111111111111111111111111111
+output:
+
+	
+		
+			
+				
+					
+						
+							
+								
+									
+										
+											
+												
+													
+														
+															
+																
+																	
+																		
+																			
+																				
+																					
+																						
+																							
+																								
+																									
+																										
+																											
+																												
+																													
+																														
+																															
+																																
+S																																	
+	S																																	
+	M																																		
+		S																																		
+		M																																			
+			S																																			
+			M																																				
+				S																																				
+				M																																					
+					S																																					
+					M																																						
+						S																																						
+						M																																							
+							S																																							
+							M																																								
+								S																																								
+								M																																									
+									S																																									
+									M																																										
+										S																																										
+										M																																											
+											S																																											
+											M																																												
+												S																																												
+												M																																													
+													S																																													
+													M																																														
+														S																																														
+														M																																															
+															S																																															
+															M																																																
+																S																																																
+																M																																																	
+																	S																																																	
+																	M																																																		
+																		S																																																		
+																		M																																																			
+																			S																																																			
+																			M																																																				
+																				S																																																				
+																				M																																																					
+																					S																																																					
+																					M																																																						
+																						S																																																						
+																						M																																																							
+																							S																																																							
+																							M																																																								
+																								S																																																								
+																								M																																																									
+																									S																																																									
+																									M																																																										
+																										S																																																										
+																										M																																																											
+																											S																																																											
+																											M																																																												
+																												S																																																												
+																												M																																																													
+																													S																																																													
+																													M																																																														
+																														S																																																														
+																														M																																																															
+																															S																																																															
+																															M																																																																
+																																S																																																																
+																																																																																																	
+																																D																																																																		
+																																	F	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	E	
+A	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	B	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	

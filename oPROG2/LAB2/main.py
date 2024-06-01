@@ -11,7 +11,7 @@ class Form(QWidget):
         request_string = "https://belarusbank.by/api/kursExchange"
         response = requests.get(request_string)
         if not response:
-            print("Что-то пошло не так.")
+            print("О оу.")
             print("Код ответа:", response.status_code)
             print("Причина:", response.reason)
             sys_exit(1)
