@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Регистрация</title>
+</head>
+<body>
+<h1>Создайте или войдите в аккаунт</h1>
+<p>Заполните параметры и нажмите кнопку <b>В добрый путь!</b>.</p>
+<a href="/user-log">Войти в аккаунт</a>
+<form action="/user-reg" method="post" enctype="multipart/form-data">
+	<fieldset>
+		<legend>Учётная запись</legend>
+		<label for="text-1">Имя:</label><br><input type="text" id="text-1" name="name" required>
+		<br>
+		<label for="text-2">Фамилия:</label><br><input type="text" id="text-2" name="surname" required>
+		<br>
+		<label for="email-1">Почта:</label><br><input type="email" id="email-1" name="email" required>
+		<br>
+		<label for="text-4">Имя пользователя:</label><br><input type="text" id="text-4" name="username" required>
+		<br>
+		<label for="password-1">Пароль:</label><br><input type="password" id="password-1" name="pwd" required>
+	</fieldset>
+
+	<br>
+
+	<input type="submit" value="Отправить данные"><input type="reset" value="Очистить форму">
+
+</form>
+</body>
+</html>

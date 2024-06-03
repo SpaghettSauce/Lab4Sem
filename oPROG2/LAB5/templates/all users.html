@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Все пользователи</title>
+</head>
+<body>
+<a href="/add-user">Добавить нового пользователя</a>
+{% for user in users %}
+	<div>
+		<fieldset>
+		<legend>Пользователь номер {{user.id}}</legend>
+		<p>Имя: {{user.first_name}}</p>
+		<p>Фамилия: {{user.last_name}}</p>
+		<p>Почта: {{user.email}}</p>
+		<p>Логин: {{user.username}}</p>
+		<p>Пароль: {{user.password}}</p>
+		<p>Дата создания: {{user.created_on}}</p>
+	</fieldset>
+	</div>
+{% endfor %}
+</body>
+</html>
