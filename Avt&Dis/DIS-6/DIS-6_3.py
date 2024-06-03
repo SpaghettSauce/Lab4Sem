@@ -1,12 +1,9 @@
 from collections import deque
 
-def read_graph(filename):
-    num_vertices = int(input("Вершин:"))
-    matrix = []
-    for _ in range(num_vertices):
-        row = list(map(int, input().split()))
-        matrix.append(row)
-
+def read_matrix(file_path):
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+        matrix = [list(map(int, line.strip().split())) for line in lines]
     return matrix
 
 def write_output(filename, distances, paths):
@@ -41,6 +38,6 @@ input_file = "input.txt"
 output_file = "output_2.txt"
 source_vertex = 0
 
-graph = read_graph(input_file)
+graph = read_matrix(input_file)
 shortest_distances, shortest_paths = breadth_first_search(graph, source_vertex)
 write_output(output_file, shortest_distances, shortest_paths)

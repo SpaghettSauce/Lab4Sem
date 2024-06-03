@@ -1,25 +1,37 @@
-def adj(file_name):
-    with open(file_name, 'r') as file:
-        incident_matrix = [list(map(int, line.split())) for line in file.readlines()]
-    num_vertices = int(input("Вершин:"))
-    num_edges = int(input("Граней "))
-    incident_matrix = []
-    for _ in range(num_vertices):
-        row = list(map(int, input().split()))
-        incident_matrix.append(row)
+def read_incidence_matrix(file_path):
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+        incidence_matrix = [list(map(int, line.strip().split())) for line in lines]
+    return incidence_matrix
 
-    matrix = [[0] * num_vertices for _ in range(num_vertices)]
+def incidence_to_adjacency(incidence_matrix):
+    num_vertices = len(incidence_matrix)
+    num_edges = len(incidence_matrix[0])
 
-    for vertex in range(num_edges):
-        incident_vertices = [vertex for vertex in range(num_vertices) if incident_matrix[vertex][vertex] != 0]
-        
-        if len(incident_vertices) == 2:
-            matrix[incident_vertices[0]][incident_vertices[1]] = 1
-            matrix[incident_vertices[1]][incident_vertices[0]] = 1
+    # Initialize adjacency matrix with zeros
+    adjacency_matrix = [[0] * num_vertices for _ in range(num_vertices)]
 
-    return matrix
+    for j in range(num_edges):
+        start = end = -1
+        for i in range(num_vertices):
+            if incidence_matrix[i][j] == -1:
+                start = i
+            elif incidence_matrix[i][j] == 1:
+                end = i
+        if start != -1 and end != -1:
+            adjacency_matrix[start][end] = 1
 
-file = "input.txt"
-matrix = adj(file)
-for row in matrix:
-    print(row)
+    return adjacency_matrix
+
+def write_adjacency_matrix(adjacency_matrix, output_file_path):
+    with open(output_file_path, 'w') as file:
+        for row in adjacency_matrix:
+            file.write(' '.join(map(str, row)) + '\n')
+
+
+input_file_path = 'input.txt'
+output_file_path = 'output.txt'
+
+incidence_matrix = read_incidence_matrix(input_file_path)
+adjacency_matrix = incidence_to_adjacency(incidence_matrix)
+write_adjacency_matrix(adjacency_matrix, output_file_path)
