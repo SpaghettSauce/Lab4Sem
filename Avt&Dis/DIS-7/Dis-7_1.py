@@ -17,7 +17,7 @@ def print_way(parent, v):
     print(v, end=" ")
 
 def print_res(current_node, distance, count_of_nodes, parent):
-    print("Node\tDistance\tWay")
+    print("Вершина\tДистанция\tПуть")
     for i in range(count_of_nodes):
         if i != current_node:
             print(f"{current_node} -> {i}\t\t{distance[i]}\t\t", end="")
@@ -56,15 +56,15 @@ def input_matrix(count_nodes):
 
 def main():
     random.seed()
-    count_nodes = int(input("Enter count of nodes: "))
+    count_nodes = int(input("Кол-во вершин: "))
     
-    print("Matrix: ")
+    print("Матрциа: ")
     mat = input_matrix(count_nodes)
 
-    this_node = int(input("Enter node: "))
+    this_node = int(input("Введите вершину: "))
     print()
 
-    print(f"Shortest way from {this_node}")
+    print(f"Кратчайший путь из {this_node}")
     dijkstra_algorithm(count_nodes, mat, this_node)
 
 if __name__ == "__main__":

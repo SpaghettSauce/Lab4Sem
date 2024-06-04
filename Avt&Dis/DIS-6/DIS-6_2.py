@@ -7,8 +7,6 @@ def read_incidence_matrix(file_path):
 def incidence_to_adjacency(incidence_matrix):
     num_vertices = len(incidence_matrix)
     num_edges = len(incidence_matrix[0])
-
-    # Initialize adjacency matrix with zeros
     adjacency_matrix = [[0] * num_vertices for _ in range(num_vertices)]
 
     for j in range(num_edges):

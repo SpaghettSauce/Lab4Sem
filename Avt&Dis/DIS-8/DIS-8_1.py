@@ -57,7 +57,6 @@ def find_min_cut(graph, source):
 
     return [i for i, x in enumerate(visited) if x]
 
-# Original graph as an adjacency matrix
 graph = [
     [0, 3, 0, 0, 5, 0, 7, 0],
     [0, 0, 6, 0, 2, 1, 0, 0],
@@ -69,22 +68,19 @@ graph = [
     [0, 0, 0, 0, 0, 0, 0, 0]
 ]
 
-source = 0  # Node S
-sink = 7    # Node T
+source = 0  
+sink = 7    
 
-# Find the maximum flow and minimum cut for the original graph
 max_flow, residual_graph = edmonds_karp(graph, source, sink)
 min_cut = find_min_cut(residual_graph, source)
 
-print(f"Maximum Flow: {max_flow}")
-print(f"Minimum Cut: {min_cut}")
+print(f"Максимальный поток: {max_flow}")
+print(f"Минимальный разрез: {min_cut}")
 
-# Set random throughputs for the arcs with values from the interval [100, 1000]
 random_graph = [[random.randint(100, 1000) if graph[i][j] > 0 else 0 for j in range(len(graph))] for i in range(len(graph))]
 
-# Find the maximum flow and minimum cut for the random graph
 max_flow_random, residual_graph_random = edmonds_karp(random_graph, source, sink)
 min_cut_random = find_min_cut(residual_graph_random, source)
 
-print(f"Maximum Flow (Random Capacities): {max_flow_random}")
-print(f"Minimum Cut (Random Capacities): {min_cut_random}")
+print(f"Максимальынй поток для рандомных значений: {max_flow_random}")
+print(f"Минимальный поток для рандомных занчений: {min_cut_random}")
