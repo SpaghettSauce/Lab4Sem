@@ -34,7 +34,7 @@ def breadth_first_search(graph, start):
     return distances, paths
 
 
-input_file = "input.txt"
+input_file = "output.txt"
 output_file = "output_2.txt"
 source_vertex = 0
 
